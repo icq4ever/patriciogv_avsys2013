@@ -29,6 +29,16 @@ xcuserdata
 *.opensdf
 *.suo
 ipch/
+*.dll*
+*.exe*
+*.exp*
+*.iobj
+*.ipdb
+*.lib
+*.tlog
+Desktop.ini
+Thumbs.db
+
 
 #Eclipse
 .metadata
