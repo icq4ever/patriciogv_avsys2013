@@ -1,8 +1,8 @@
-#include "testApp.h"
+#include "ofApp.h"
 #define STRINGIFY(A) #A
 
 //--------------------------------------------------------------
-void testApp::setup(){
+void ofApp::setup(){
     ofEnableAlphaBlending();
     ofSetVerticalSync(true);
     
@@ -52,7 +52,7 @@ void testApp::setup(){
     shader.linkProgram();
     
     for (int i = 0; i < 2; i++){
-        fbo[i].allocate(ofGetScreenWidth(), img.height);
+        fbo[i].allocate(ofGetScreenWidth(), img.getHeight());
         fbo[i].begin();
         ofClear(0,0);
         fbo[i].end();
@@ -65,10 +65,10 @@ void testApp::setup(){
 }
 
 //--------------------------------------------------------------
-void testApp::update(){
-    mouse.x = ofLerp(mouse.x, ofClamp(mouseX, 0, img.width), 0.1);
+void ofApp::update(){
+    mouse.x = ofLerp(mouse.x, ofClamp(mouseX, 0, img.getWidth()), 0.1);
     mouse.y = ofLerp(mouse.y, ofClamp(mouseY, 0, ofGetHeight()), 0.01);
-    dispersion = ofMap(mouse.y,0,img.height,0.0,img.width*0.25);
+    dispersion = ofMap(mouse.y,0,img.getHeight(),0.0,img.getWidth()*0.25);
     
     offset += 0.5;
     while ( offset > fbo[0].getWidth() ){
@@ -95,22 +95,22 @@ void testApp::update(){
 }
 
 //--------------------------------------------------------------
-void testApp::draw(){
+void ofApp::draw(){
     ofBackground(0);
     
     ofPushMatrix();
     ofTranslate(0, ofGetHeight()*0.5 - img.getHeight()*0.5 );
     ofSetColor(255);
     img.draw(0, 0);
-    fbo[count%2].draw(img.width, 0);
+    fbo[count%2].draw(img.getWidth(), 0);
     
     ofSetColor(255,50);
-    ofRect(mouse.x-dispersion, 0, dispersion*2.0, img.height);
+    ofRect(mouse.x-dispersion, 0, dispersion*2.0, img.getHeight());
     ofSetColor(255, 0, 0);
-    ofLine(mouse.x, 0, mouse.x, img.height);
+    ofLine(mouse.x, 0, mouse.x, img.getHeight());
     
     ofSetColor(255,50);
-    ofRect(img.getWidth()+offset-dispersion, 0, dispersion*2.0, img.height);
+    ofRect(img.getWidth()+offset-dispersion, 0, dispersion*2.0, img.getHeight());
     
     ofPopMatrix();
     
@@ -119,7 +119,7 @@ void testApp::draw(){
 }
 
 //--------------------------------------------------------------
-void testApp::keyPressed(int key){
+void ofApp::keyPressed(int key){
     if (key == 'f'){
         ofToggleFullscreen();
     } else if ( key == OF_KEY_RIGHT){
@@ -130,34 +130,34 @@ void testApp::keyPressed(int key){
 }
 
 //--------------------------------------------------------------
-void testApp::keyReleased(int key){
+void ofApp::keyReleased(int key){
     
 }
 
 //--------------------------------------------------------------
-void testApp::mouseMoved(int x, int y ){
+void ofApp::mouseMoved(int x, int y ){
     offset += 0.5;
 }
 
 //--------------------------------------------------------------
-void testApp::mouseDragged(int x, int y, int button){
+void ofApp::mouseDragged(int x, int y, int button){
 
 }
 
 //--------------------------------------------------------------
-void testApp::mousePressed(int x, int y, int button){
+void ofApp::mousePressed(int x, int y, int button){
 
 }
 
 //--------------------------------------------------------------
-void testApp::mouseReleased(int x, int y, int button){
+void ofApp::mouseReleased(int x, int y, int button){
 
 }
 
 //--------------------------------------------------------------
-void testApp::windowResized(int w, int h){
+void ofApp::windowResized(int w, int h){
     for (int i = 0; i < 2; i++){
-        fbo[i].allocate(w-img.width, img.height);
+        fbo[i].allocate(w-img.getWidth(), img.getHeight());
         fbo[i].begin();
         ofClear(0,0);
         fbo[i].end();
@@ -165,11 +165,11 @@ void testApp::windowResized(int w, int h){
 }
 
 //--------------------------------------------------------------
-void testApp::gotMessage(ofMessage msg){
+void ofApp::gotMessage(ofMessage msg){
 
 }
 
 //--------------------------------------------------------------
-void testApp::dragEvent(ofDragInfo dragInfo){ 
+void ofApp::dragEvent(ofDragInfo dragInfo){ 
 
 }
