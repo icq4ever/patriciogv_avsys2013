@@ -1,11 +1,11 @@
-#include "testApp.h"
+#include "ofApp.h"
 
 bool canBeRemoved ( Grain  &g ) {
 	return g.bAmReadyToBeErased;
 }
 
 //--------------------------------------------------------------
-void testApp::setup(){
+void ofApp::setup(){
     ofSetVerticalSync(true);
     ofEnableAlphaBlending();
     ofEnableSmoothing();
@@ -31,13 +31,13 @@ void testApp::setup(){
 }
 
 //--------------------------------------------------------------
-void testApp::update(){
+void ofApp::update(){
     
     ofSetWindowTitle(ofToString(ofGetFrameRate()));
 }
 
 //--------------------------------------------------------------
-void testApp::draw(){
+void ofApp::draw(){
     ofBackgroundGradient(ofColor::gray, ofColor::black);
     
     ofPushMatrix();
@@ -95,14 +95,14 @@ void testApp::draw(){
 }
 
 //--------------------------------------------------------------
-void testApp::audioIn(float * input, int bufferSize, int nChannels){
+void ofApp::audioIn(float * input, int bufferSize, int nChannels){
     if (bRecord){
         sample.rec(input,bufferSize,nChannels);
     }
 }
 
 //--------------------------------------------------------------
-void testApp::audioOut(float * output, int bufferSize, int nChannels){
+void ofApp::audioOut(float * output, int bufferSize, int nChannels){
     if (!bRecord){
 
         //  Clean buffer
@@ -124,7 +124,7 @@ void testApp::audioOut(float * output, int bufferSize, int nChannels){
     }
 }
 
-void testApp::makeGrains(float * _output, int _bufferSize, int _nChannels){
+void ofApp::makeGrains(float * _output, int _bufferSize, int _nChannels){
     
     float oldGrainCount  = grainCount;
 	grainCount			+= grainsPerSecond * ( _bufferSize/44100.0f );
@@ -168,7 +168,7 @@ void testApp::makeGrains(float * _output, int _bufferSize, int _nChannels){
 }
 
 //--------------------------------------------------------------
-void testApp::keyPressed(int key){
+void ofApp::keyPressed(int key){
     if (key == ' '){
         if (!bRecord){
             sample.clear();
@@ -236,7 +236,7 @@ void testApp::keyPressed(int key){
 }
 
 //--------------------------------------------------------------
-void testApp::keyReleased(int key){
+void ofApp::keyReleased(int key){
     if (key == ' '){
         bRecord = false;
         sample.update();
@@ -244,36 +244,36 @@ void testApp::keyReleased(int key){
 }
 
 //--------------------------------------------------------------
-void testApp::mouseMoved(int x, int y ){
+void ofApp::mouseMoved(int x, int y ){
 //    grainHead = 
 }
 
 //--------------------------------------------------------------
-void testApp::mouseDragged(int x, int y, int button){
+void ofApp::mouseDragged(int x, int y, int button){
 
 }
 
 //--------------------------------------------------------------
-void testApp::mousePressed(int x, int y, int button){
+void ofApp::mousePressed(int x, int y, int button){
 
 }
 
 //--------------------------------------------------------------
-void testApp::mouseReleased(int x, int y, int button){
+void ofApp::mouseReleased(int x, int y, int button){
 
 }
 
 //--------------------------------------------------------------
-void testApp::windowResized(int w, int h){
+void ofApp::windowResized(int w, int h){
     sample.update();
 }
 
 //--------------------------------------------------------------
-void testApp::gotMessage(ofMessage msg){
+void ofApp::gotMessage(ofMessage msg){
 
 }
 
 //--------------------------------------------------------------
-void testApp::dragEvent(ofDragInfo dragInfo){ 
+void ofApp::dragEvent(ofDragInfo dragInfo){ 
 
 }
