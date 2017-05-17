@@ -31,6 +31,8 @@ void TimeLine::addPoint(ofPoint _pos){
 
 int TimeLine::size(){
     points.size();
+
+	return 0;
 }
 
 void TimeLine::clear(){
