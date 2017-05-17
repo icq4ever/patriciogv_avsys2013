@@ -9,10 +9,12 @@ void ofApp::setup(){
     ofSetVerticalSync(true);
     ofEnableAlphaBlending();
     ofEnableSmoothing();
+
+	ofSetFrameRate(60);
     
     //  Sound I/O 
     //
-    ofSoundStreamSetup(2,2,this, 44100, 512, 4);
+	ofSoundStreamSetup(2, 2, this, 44100, 512, 4);
     
     bShowGrain = false;
     bRecord = false;
@@ -229,7 +231,7 @@ void ofApp::keyPressed(int key){
                 grainsPerSecond -= 1;
                 if (grainsPerSecond < 0) grainsPerSecond = 0;
                 break;
-            case OF_KEY_RETURN:
+			case OF_KEY_RETURN:
                 bShowGrain = !bShowGrain;
                 break;
         }
