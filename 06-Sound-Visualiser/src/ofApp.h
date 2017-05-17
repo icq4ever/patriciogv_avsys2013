@@ -2,8 +2,10 @@
 
 #include "ofMain.h"
 #include "ofxFX.h"
+#include "ofxGlow.h"
+#include "ofxChromaAb.h"
 
-class testApp : public ofBaseApp{
+class ofApp : public ofBaseApp{
 public:
     void setup();
     void update();

@@ -1,7 +1,7 @@
-#include "testApp.h"
+#include "ofApp.h"
 
 //--------------------------------------------------------------
-void testApp::setup(){
+void ofApp::setup(){
     ofSetVerticalSync(true);
     ofEnableAlphaBlending();
     ofSetFullscreen(true);
@@ -18,6 +18,7 @@ void testApp::setup(){
     
     //  Set Graphics
     //
+
     width = ofGetScreenWidth();
     height = ofGetScreenHeight();
     glow.allocate(width, height);
@@ -32,7 +33,7 @@ void testApp::setup(){
 }
 
 //--------------------------------------------------------------
-void testApp::update(){
+void ofApp::update(){
     glow.begin();
     ofPushMatrix();
     ofTranslate(width*0.5, height*0.5);
@@ -59,7 +60,7 @@ void testApp::update(){
 }
 
 //--------------------------------------------------------------
-void testApp::draw(){
+void ofApp::draw(){
     ofBackground(0);
     
     ofSetColor(255);
@@ -72,7 +73,7 @@ void testApp::draw(){
         //  Mirror
         //
         
-        chromaAb.getTextureReference().bind();
+        chromaAb.getTexture().bind();
         glBegin(GL_QUADS);
         //  First half
         //
@@ -88,7 +89,7 @@ void testApp::draw(){
         glTexCoord2f(0, height); glVertex3f(width, height, 0);
         glTexCoord2f(width*0.5,height);  glVertex3f(width*0.5,height, 0);
         glEnd();
-        chromaAb.getTextureReference().unbind();
+        chromaAb.getTexture().unbind();
         
     } else if (nFaces >= 3){
         
@@ -115,15 +116,15 @@ void testApp::draw(){
             mesh.addVertex(e);
         }
         
-        chromaAb.getTextureReference().bind();
+        chromaAb.getTexture().bind();
         mesh.draw();
-        chromaAb.getTextureReference().unbind();
+        chromaAb.getTexture().unbind();
     }
     
 }
 
 //--------------------------------------------------------------
-void testApp::audioIn(float * input, int bufferSize, int nChannels){
+void ofApp::audioIn(float * input, int bufferSize, int nChannels){
     
     float rms = 0;
     int zeroCrossingCount = 0;
@@ -185,7 +186,7 @@ void testApp::audioIn(float * input, int bufferSize, int nChannels){
 }
 
 //--------------------------------------------------------------
-void testApp::keyPressed(int key){
+void ofApp::keyPressed(int key){
     if (key == OF_KEY_LEFT){
         nFaces--;
     } else if (key == OF_KEY_RIGHT){
@@ -194,41 +195,41 @@ void testApp::keyPressed(int key){
 }
 
 //--------------------------------------------------------------
-void testApp::keyReleased(int key){
+void ofApp::keyReleased(int key){
 
 }
 
 //--------------------------------------------------------------
-void testApp::mouseMoved(int x, int y ){
+void ofApp::mouseMoved(int x, int y ){
     
 }
 
 //--------------------------------------------------------------
-void testApp::mouseDragged(int x, int y, int button){
+void ofApp::mouseDragged(int x, int y, int button){
 
 }
 
 //--------------------------------------------------------------
-void testApp::mousePressed(int x, int y, int button){
+void ofApp::mousePressed(int x, int y, int button){
 
 }
 
 //--------------------------------------------------------------
-void testApp::mouseReleased(int x, int y, int button){
+void ofApp::mouseReleased(int x, int y, int button){
 
 }
 
 //--------------------------------------------------------------
-void testApp::windowResized(int w, int h){
+void ofApp::windowResized(int w, int h){
 
 }
 
 //--------------------------------------------------------------
-void testApp::gotMessage(ofMessage msg){
+void ofApp::gotMessage(ofMessage msg){
 
 }
 
 //--------------------------------------------------------------
-void testApp::dragEvent(ofDragInfo dragInfo){ 
+void ofApp::dragEvent(ofDragInfo dragInfo){ 
 
 }
